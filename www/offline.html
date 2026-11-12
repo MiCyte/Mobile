@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>MiCyte</title>
+<style>
+  :root { color-scheme: dark; --substrate: #16130e; --hyphae: #ece5d4; --dim: #a79b84; --ochre: #c68a3d; }
+  html, body { margin: 0; height: 100%; background: var(--substrate); color: var(--hyphae); }
+  body { font: 17px/1.5 -apple-system, system-ui, sans-serif; display: grid; place-items: center;
+         padding: env(safe-area-inset-top) 24px env(safe-area-inset-bottom); box-sizing: border-box; }
+  main { max-width: 22rem; }
+  img { width: 56px; height: 56px; border-radius: 12px; }
+  h1 { font-size: 1.6rem; font-weight: 600; margin: 1rem 0 .5rem; }
+  p { color: var(--dim); margin: 0 0 1.5rem; }
+  button { font: inherit; font-weight: 600; color: var(--substrate); background: var(--ochre);
+           border: 0; border-radius: 10px; padding: .8rem 1.4rem; }
+</style>
+</head>
+<body>
+<main>
+  <img src="icon.svg" alt="">
+  <h1>MiCyte can't reach your instance.</h1>
+  <p>Check that you're online, then try again. Your instance is safe; nothing is lost while you're offline.</p>
+  <button type="button" onclick="location.replace('https://micyte.com/dashboard/')">Try again</button>
+</main>
+</body>
+</html>

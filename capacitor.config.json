@@ -1,0 +1,17 @@
+{
+  "appId": "com.micyte.app",
+  "appName": "MiCyte",
+  "webDir": "www",
+  "appendUserAgent": "MiCyteApp/1.0",
+  "backgroundColor": "#16130e",
+  "server": {
+    "url": "https://micyte.com/dashboard/",
+    "errorPath": "offline.html",
+    "allowNavigation": ["micyte.com", "auth.fruitfulnetworkdevelopment.com"]
+  },
+  "ios": {
+    "contentInset": "automatic",
+    "limitsNavigationsToAppBoundDomains": true,
+    "scheme": "MiCyte"
+  }
+}

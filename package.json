@@ -1,0 +1,18 @@
+{
+  "name": "micyte-mobile",
+  "version": "1.0.0",
+  "private": true,
+  "description": "The MiCyte app: your hosted MiCyte instance on your phone.",
+  "license": "AGPL-3.0-or-later",
+  "scripts": {
+    "sync": "cap sync ios"
+  },
+  "dependencies": {
+    "@capacitor/app": "8.1.2",
+    "@capacitor/core": "8.5.3",
+    "@capacitor/ios": "8.5.3"
+  },
+  "devDependencies": {
+    "@capacitor/cli": "8.5.3"
+  }
+}
