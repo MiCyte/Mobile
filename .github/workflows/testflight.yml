@@ -18,6 +18,12 @@ name: TestFlight
 
 on:
   workflow_dispatch:
+    inputs:
+      runner:
+        description: The Mac to build on (Intel when GitHub's Apple-silicon Macs are queued out)
+        type: choice
+        options: [macos-15, macos-15-intel]
+        default: macos-15
   push:
     tags: ['v*']
 
@@ -30,7 +36,7 @@ concurrency:
 
 jobs:
   upload:
-    runs-on: macos-15
+    runs-on: ${{ inputs.runner || 'macos-15' }}
     timeout-minutes: 60
     env:
       ASC_KEY_ID: ${{ secrets.ASC_KEY_ID }}
