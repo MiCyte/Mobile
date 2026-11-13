@@ -22,7 +22,7 @@ on:
       runner:
         description: The Mac to build on (Intel when GitHub's Apple-silicon Macs are queued out)
         type: choice
-        options: [macos-15, macos-15-intel]
+        options: [macos-15, macos-15-intel, macos-26]
         default: macos-15
   push:
     tags: ['v*']
@@ -44,6 +44,15 @@ jobs:
       BUILD_NUMBER: ${{ github.run_number }}
     steps:
       - uses: actions/checkout@v4
+      - name: Xcode 26 (App Store Connect takes only builds with the iOS 26 SDK or later)
+        run: |
+          set -euo pipefail
+          ls -d /Applications/Xcode*.app
+          xcode=$( (ls -d /Applications/Xcode_26*.app 2>/dev/null || true) \
+            | grep -viE 'beta|release_candidate' | sort -V | tail -1 || true)
+          test -n "$xcode" || { echo "::error::this runner has no Xcode 26"; exit 1; }
+          sudo xcode-select -s "$xcode"
+          xcodebuild -version
       - uses: actions/setup-node@v4
         with:
           node-version: 22
