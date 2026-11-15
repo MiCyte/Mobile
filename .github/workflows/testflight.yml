@@ -59,6 +59,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx cap sync ios
+      - name: The app is still the app the portal knows
+        run: python3 ci/check_app_contract.py
       - name: The App Store Connect key, for this run only
         env:
           ASC_KEY_P8: ${{ secrets.ASC_KEY_P8 }}

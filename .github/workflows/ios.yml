@@ -24,6 +24,8 @@ jobs:
           cache: npm
       - run: npm ci
       - run: npx cap sync ios
+      - name: The app is still the app the portal knows
+        run: python3 ci/check_app_contract.py
       - name: Build for the simulator
         run: |
           set -o pipefail

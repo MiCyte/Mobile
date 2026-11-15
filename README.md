@@ -35,8 +35,10 @@ open ios/App/App.xcodeproj
 
 Continuous integration does the same on GitHub's macOS runners:
 
-* **iOS build** (every push and pull request): builds for the simulator, launches the app and
-  keeps a screenshot as an artifact. Needs no secrets.
+* **iOS build** (every push and pull request): checks the app's contract with the portal
+  (`ci/check_app_contract.py`: the user agent mark, and the two hosts the web view may
+  show), builds for the simulator, launches the app and keeps a screenshot as an artifact.
+  Needs no secrets.
 * **TestFlight** (run by hand, or by pushing a `v*` tag): archives, signs with Xcode's
   automatic signing and uploads to App Store Connect. Needs three repository secrets from an
   App Store Connect API key: `ASC_KEY_ID`, `ASC_ISSUER_ID` and `ASC_KEY_P8` (the whole text of

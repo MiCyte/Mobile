@@ -11,6 +11,8 @@ class MainViewController: CAPBridgeViewController {
         super.capacitorDidLoad()
         guard let webView = webView else { return }
         webView.allowsBackForwardNavigationGestures = true
+        // Capacitor turns the bounce off, and a refresh control cannot be pulled without it.
+        webView.scrollView.bounces = true
         refresh.addTarget(self, action: #selector(reload), for: .valueChanged)
         webView.scrollView.refreshControl = refresh
     }
