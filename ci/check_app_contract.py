@@ -34,6 +34,14 @@ def problems() -> list[str]:
         found.append(f"allowNavigation {allowed} and Info.plist WKAppBoundDomains {bound} differ")
     if (config.get("ios") or {}).get("limitsNavigationsToAppBoundDomains") is not True:
         found.append("ios.limitsNavigationsToAppBoundDomains is not true")
+    # The portal draws its own safe areas (`viewport-fit=cover`: the coal band under the status
+    # bar, the bottom bar standing off the home indicator). With "automatic" the web view stops
+    # above the home indicator and the app's own background shows below it as a dark bar on
+    # every screen (the operator, 2026-11-24: "I removed the black bar that seems to be on every
+    # screen at the bottom"). A page without `viewport-fit=cover` is still kept inside the safe
+    # area by WebKit itself.
+    if (config.get("ios") or {}).get("contentInset") != "never":
+        found.append("ios.contentInset is not \"never\": the app's background would show as a bar under the page")
     # `npx cap sync ios` copies the configuration into the app; the copy is what ships.
     synced = ROOT / "ios/App/App/capacitor.config.json"
     if synced.exists():

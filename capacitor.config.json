@@ -10,7 +10,7 @@
     "allowNavigation": ["micyte.com", "auth.fruitfulnetworkdevelopment.com"]
   },
   "ios": {
-    "contentInset": "automatic",
+    "contentInset": "never",
     "limitsNavigationsToAppBoundDomains": true,
     "scheme": "MiCyte"
   }
